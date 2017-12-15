@@ -23,22 +23,24 @@ module ObjectModel
 
   # class
   class Laptop < Parent
+    prepend LinuxFriendly
   end
 end
 
-laptop = ObjectModel::Laptop
-lap = laptop.new
+# laptop = ObjectModel::Laptop
 linux_friendly_role = ObjectModel::LinuxFriendly
-laptop.prepend(linux_friendly_role)
-parent = ObjectModel::Parent
-parent_instance = parent.new
+# parent = ObjectModel::Parent
+# parent_instance = parent.new
 
-p laptop.superclass
-p laptop.ancestors
-p laptop.respond_to?(:fork_process)
-p parent.respond_to?(:fork_process)
-p laptop.fork_process
-p parent.fork_process
-p lap.fork_process
-p parent_instance.fork_process
-p parent.instance_methods
+# p laptop.superclass
+# p parent_instance.fork_process
+
+generic_object = Struct.new 'Desktop'
+generic_object.extend linux_friendly_role
+
+def generic_object.fork_process
+  # super
+  raise NoMethodError
+end
+
+p generic_object.ancestors
