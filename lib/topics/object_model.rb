@@ -27,13 +27,7 @@ module ObjectModel
   end
 end
 
-# laptop = ObjectModel::Laptop
 linux_friendly_role = ObjectModel::LinuxFriendly
-# parent = ObjectModel::Parent
-# parent_instance = parent.new
-
-# p laptop.superclass
-# p parent_instance.fork_process
 
 generic_object = Struct.new 'Desktop'
 generic_object.extend linux_friendly_role
